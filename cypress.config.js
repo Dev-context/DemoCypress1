@@ -2,7 +2,7 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: "cypress/e2e/*.js",
+    specPattern: "cypress/e2e/**/*.spec.js",
     setupNodeEvents(on, config) {
       this.baseUrl = "https://magento-demo.mageplaza.com/default/";
     },
