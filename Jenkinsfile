@@ -26,9 +26,4 @@ pipeline {
             }
         }
     }
-        post {
-            always {
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true])
-            }
-        }
 }
