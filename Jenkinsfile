@@ -3,7 +3,7 @@ pipeline {
 
     parameters {
         string(name: 'SPEC', defaultValue: 'cypress/e2e/Tests/*.js', description: '')
-        choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: '')
+        string(name: 'BROWSER', defaultValue: 'chrome', description: 'Broser')
     }
 
     stages {
