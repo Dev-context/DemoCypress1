@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'SPEC', defaultValue: '', description: '')
+        string(name: 'SPEC', defaultValue: 'cypress/e2e/Tests/login.js', description: '')
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: '')
     }
 
