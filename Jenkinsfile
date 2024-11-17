@@ -25,11 +25,10 @@ pipeline {
                 echo 'Deploying application'
             }
         }
-
+    }
         post {
             always {
                 publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true])
             }
         }
-    }
 }
