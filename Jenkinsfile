@@ -1,35 +1,35 @@
 pipeline {
-  agent any
+    agent any
 
-  parameters {
-    string(name: 'SPEC', defaultValue: '', description: '')
-    choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: '')
-  }
-
-  options {
-    ansiColor('xterm')
-  }
-
-  stages {
-    stage('Building') {
-      echo 'Build The appication'
+    parameters {
+        string(name: 'SPEC', defaultValue: '', description: '')
+        choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: '')
     }
 
-    stage('Testing') {
-      steps {
-        bat 'npm i'
-        bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
-      }
+    options {
+        ansiColor('xterm')
     }
 
-    stage('Deploying Application') {
-      echo 'Deploying application'
-    }
+    stages {
+        stage('Building') {
+            echo    'Build The appication'
+        }
 
-    post {
-      always {
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true])
-      }
+        stage('Testing') {
+            steps {
+                bat     'npm i'
+                bat     "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
+            }
+        }
+
+        stage('Deploying Application') {
+            echo    'Deploying application'
+        }
+
+        post {
+            always {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true])
+            }
+        }
     }
-  }
 }
