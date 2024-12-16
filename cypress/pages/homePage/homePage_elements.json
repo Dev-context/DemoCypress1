@@ -1,0 +1,4 @@
+{
+  "seaching_ipt":"input[type='search']",
+  "productList":".products"
+}
