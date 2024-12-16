@@ -9,13 +9,12 @@ pipeline {
     stages {
         stage('Building') {
             steps {
-                echo 'Build The appication'
+                sh 'npm install'
             }
         }
 
         stage('Testing') {
             steps {
-                sh 'npm i'
                 sh 'npx cypress run --browser "$BROWSER" --headless --spec "$SPEC"'
             }
         }
