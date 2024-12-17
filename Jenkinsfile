@@ -2,15 +2,16 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'SPEC', defaultValue: 'cypress/e2e/**/*', description: '')
-        string(name: 'BROWSER', defaultValue: 'chrome', description: 'Browser')
+        string(name: 'SPEC', defaultValue: 'cypress/e2e/**/*', description: 'Test spec file pattern')
+        string(name: 'BROWSER', defaultValue: 'chrome', description: 'Browser for Cypress tests')
     }
 
     stages {
         stage('Install Dependencies') {
             steps {
-                script{
-                    docker.image('cypress/included:12.0.0').inside{
+                script {
+                    docker.image('cypress/included:12.0.0').inside {
+                        // Instalar as dependências do projeto
                         sh 'npm install'
                     }
                 }
@@ -19,15 +20,24 @@ pipeline {
 
         stage('Run Cypress Tests') {
             steps {
-                docker.image('cypress/included:12.0.0').inside {
-                        sh 'npx cypress run --browser "$BROWSER" --headless --spec "$SPEC"'
-                    } 
+                script {
+                    // Rodar os testes do Cypress com as variáveis de parâmetro
+                    docker.image('cypress/included:12.0.0').inside {
+                        sh ''' 
+                            npx cypress run \
+                            --browser "$BROWSER" \
+                            --headless \
+                            --spec "$SPEC"
+                        '''
+                    }
+                }
             }
         }
 
         stage('Deploying Application') {
             steps {
                 echo 'Deploying application'
+                // Aqui você pode adicionar comandos para o deploy da sua aplicação
             }
         }
     }
