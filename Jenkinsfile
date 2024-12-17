@@ -3,7 +3,7 @@ pipeline {
         docker {
             image 'cypress/included:12.0.0'
             args  '-u root:root'  // Run as root if necessary
-        },
+        }
 
     parameters {
         string(name: 'SPEC', defaultValue: 'cypress/e2e/**/*', description: 'Test spec file pattern')
