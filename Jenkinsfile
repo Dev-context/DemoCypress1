@@ -36,7 +36,7 @@ pipeline {
                     }
                 }
             }
-        }
+        },
 
         stage('Deploying Application') {
             steps {
