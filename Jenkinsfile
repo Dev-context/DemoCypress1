@@ -1,8 +1,7 @@
 pipeline {
     agent {
-        dockerContainer {
+        docker {
             image 'cypress/included:12.0.0'
-            args  '-u root:root'  // Run as root if necessary
         }
     }
     parameters {
