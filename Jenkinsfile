@@ -36,12 +36,13 @@ pipeline {
                     }
                 }
             }
-        },
+        }
 
         stage('Deploying Application') {
             steps {
                 echo 'Deploying application'
                 // Aqui você pode adicionar comandos para o deploy da sua aplicação
+                }
             }
         }
     }
