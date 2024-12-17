@@ -13,7 +13,6 @@ pipeline {
                     docker.image('cypress/included:12.0.0').inside{
                         sh 'npm install'
                     }
-
                 }
                 
             }
