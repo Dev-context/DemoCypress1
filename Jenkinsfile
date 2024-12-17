@@ -13,7 +13,10 @@ pipeline {
         stage('Check Docker Version') {
             steps {
                 sh 'echo $PATH'
-                sh 'docker --version'  // This will confirm if docker is accessible
+                sh 'docker --version' 
+                sh 'docker build -t cypress-container . '
+                sh 'docker run -t cypress-containe-1r'
+                // This will confirm if docker is accessible
             }
         }
         
