@@ -12,6 +12,13 @@ pipeline {
 
     stages {
         stage('Install Dependencies') {
+
+            stage('Check Docker Version') {
+               steps {
+                  sh 'echo $PATH'
+                  sh 'docker --version'  // This will confirm if docker is accessible
+            }
+        }
             steps {
                 script {
                     docker.image('cypress/included:12.0.0').inside {
