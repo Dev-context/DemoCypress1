@@ -10,16 +10,13 @@ class HomePage {
   }
 
   addCard() {
-    cy.intercept({
-      method: "get",
-      url: "*/seleniumPractise/data/*",
-    }).as("getProductList");
+  
 
     // cy.wait("@getProductList");
     cy.get(elements.productList)
       .find(".product")
       .each(($el, index) => {
-        cy.wrap($el).find("button").contains("ADD TO CART").click();
+        cy.wrap($el).find("button").should('be.visible').click();
       });
   }
 
