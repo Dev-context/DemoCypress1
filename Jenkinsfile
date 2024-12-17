@@ -7,15 +7,23 @@ pipeline {
     }
 
     stages {
-        stage('Building') {
+        stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                script{
+                    docker.image('cypress/included:12.0.0').inside{
+                        sh 'npm install'
+                    }
+
+                }
+                
             }
         }
 
-        stage('Testing') {
+        stage('Run Cypress Tests') {
             steps {
-                sh 'npx cypress run --browser "$BROWSER" --headless --spec "$SPEC"'
+                docker.image('cypress/included:12.0.0').inside {
+                        sh 'npx cypress run --browser "$BROWSER" --headless --spec "$SPEC"'
+                    } 
             }
         }
 
