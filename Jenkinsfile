@@ -4,7 +4,7 @@ pipeline {
             image 'cypress/included:12.0.0'
             args  '-u root:root'  // Run as root if necessary
         }
-
+    }
     parameters {
         string(name: 'SPEC', defaultValue: 'cypress/e2e/**/*', description: 'Test spec file pattern')
         string(name: 'BROWSER', defaultValue: 'chrome', description: 'Browser for Cypress tests')
@@ -39,11 +39,11 @@ pipeline {
         }
 
         stage('Deploying Application') {
-            steps {
+                steps {
                 echo 'Deploying application'
                 // Aqui você pode adicionar comandos para o deploy da sua aplicação
                 }
             }
-        }
+        
     }
 }
