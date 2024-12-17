@@ -3,7 +3,7 @@ WORKDIR /tests
     
 COPY ./package.json  .
 COPY ./cypress.config.js .
-COPY ./cypress/ ./cypress/
+COPY ./cypress/ ./cypress
 
 RUN npm install
 
